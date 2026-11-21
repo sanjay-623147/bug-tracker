@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Software Requirements Specification (SRS) - DevCore BugTracker</title>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>
+  mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
+</script>
+<style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    color: #24292e;
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+  h1, h2, h3, h4 { color: #0d233a; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; margin-top: 1.5em; }
+  h1 { font-size: 2.2em; border-bottom: 2px solid #0056b3; }
+  h2 { font-size: 1.5em; }
+  h3 { font-size: 1.2em; border-bottom: none; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+  th, td { border: 1px solid #dfe2e5; padding: 8px 12px; text-align: left; }
+  th { background-color: #f6f8fa; font-weight: 600; }
+  tr:nth-child(even) { background-color: #fbfcfd; }
+  code { background-color: #f0f3f6; padding: 2px 5px; border-radius: 4px; font-size: 0.9em; font-family: Consolas, monospace; }
+  pre { background-color: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .badge { display: inline-block; padding: 3px 8px; border-radius: 12px; font-size: 0.8em; font-weight: bold; background: #e1f5fe; color: #0277bd; }
+  .diagram-box { background: #fafbfc; border: 1px solid #e1e4e8; border-radius: 8px; padding: 16px; margin: 16px 0; text-align: center; }
+  .print-btn-bar { position: sticky; top: 10px; background: #ffffff; padding: 10px; border: 1px solid #d0d7de; border-radius: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); margin-bottom: 25px; display: flex; justify-content: space-between; align-items: center; z-index: 999; }
+  .btn-print { background: #2da44e; color: #fff; border: none; padding: 8px 18px; font-size: 14px; font-weight: 600; border-radius: 6px; cursor: pointer; }
+  .btn-print:hover { background: #2c974b; }
+
+  @media print {
+    body { font-size: 10pt; margin: 0; padding: 0; max-width: 100%; line-height: 1.4; color: #111; }
+    .no-print, .print-btn-bar { display: none !important; visibility: hidden !important; }
+    @page { margin: 1.2cm; size: A4; }
+
+    /* Prevent diagram splits and empty page wastage */
+    .diagram-box, table, pre, tr {
+      page-break-inside: avoid !important;
+      break-inside: avoid !important;
+    }
+
+    h1, h2, h3, h4 {
+      page-break-after: avoid !important;
+      break-after: avoid !important;
+      margin-top: 0.8em !important;
+      margin-bottom: 0.2em !important;
+    }
+
+    p, ul, ol {
+      margin-top: 0.3em;
+      margin-bottom: 0.4em;
+    }
+
+    .diagram-box {
+      padding: 8px 12px !important;
+      margin: 6px 0 !important;
+      border: 1px solid #d0d7de !important;
+    }
+
+    .diagram-box svg {
+      max-height: 360px !important;
+      width: auto !important;
+      max-width: 95% !important;
+      display: inline-block !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="print-btn-bar no-print">
+  <div><strong>📄 Ready for Submission:</strong> Print or Save as PDF directly from your browser.</div>
+  <button class="btn-print" onclick="window.print()">🖨️ Print / Save as PDF (Ctrl + P)</button>
+</div>
+
+<div style="text-align: center; margin-bottom: 40px; padding: 30px; background: #f8fafc; border-radius: 10px; border: 1px solid #e2e8f0;">
+  <h1 style="border: none; margin-bottom: 5px;">SOFTWARE REQUIREMENTS SPECIFICATION (SRS)</h1>
+  <h3 style="color: #4a5568; margin-top: 0;">DevCore Bug Tracker & Process Metrics System</h3>
+  <p><strong>Course:</strong> Software Engineering Lab (CSM402) — Project Title #12<br>
+  <strong>Department:</strong> Electronics & Communication Engineering (ECE) | B.Tech 4th Year<br>
+  <strong>Team:</strong> DevCore</p>
+  <div style="display: inline-block; text-align: left; margin-top: 15px;">
+    <strong>Team Members:</strong><br>
+    • <strong>M. Sanjhay Baargav</strong> (Roll No: <strong>623147</strong>) — Systems Analyst & Backend Architecture<br>
+    • <strong>G. Dheeraj</strong> (Roll No: <strong>623192</strong>) — Quality Assurance Lead & Metrics Specialist
+  </div>
+</div>
+
+<h2>1. Introduction & Project Scope</h2>
+<p>
+  Software maintenance represents over <strong>60% to 70%</strong> of the total software lifecycle expenditure. 
+  The <strong>DevCore Bug Tracker</strong> is a full-lifecycle defect tracking and quantitative metrics evaluation system.
+  It is engineered to fulfill all four lab syllabus outcomes:
+</p>
+<ol>
+  <li><strong>Analyze Maintenance Requirements:</strong> IEEE classification into Corrective, Adaptive, Perfective, and Preventive maintenance.</li>
+  <li><strong>Bug Life Cycle Workflows:</strong> Formal state machine governing state transitions (New &rarr; Assigned &rarr; In Progress &rarr; Resolved &rarr; Under Retest &rarr; Closed / Reopened).</li>
+  <li><strong>Issue Tracking & Traceability:</strong> Capture detailed steps, environment, priority, severity, and audit history.</li>
+  <li><strong>Process Improvement Metrics:</strong> Real-time evaluation of DSI, MTTR, Defect Density (KLOC), and Reopen Rate.</li>
+</ol>
+
+<h2>2. Stakeholder Roles (Traditional & Agile / Scrum Context)</h2>
+<p>
+  In software engineering, role allocation depends on whether the team uses a standard maintenance model or an Agile/Scrum framework:
+</p>
+<table>
+  <thead>
+    <tr>
+      <th>Role</th>
+      <th>Day-to-Day Responsibilities in DevCore</th>
+      <th>Agile / Scrum Role Equivalent</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>QA / Test Engineer</strong></td>
+      <td>Finds and logs bugs with reproduction steps; verifies fixes during retest; closes or reopens tickets.</td>
+      <td><strong>Development Team Member (Tester)</strong></td>
+    </tr>
+    <tr>
+      <td><strong>Developer / Software Engineer</strong></td>
+      <td>Investigates root cause, develops code patch, conducts unit testing, and marks ticket as Resolved.</td>
+      <td><strong>Development Team Member (Coder)</strong></td>
+    </tr>
+    <tr>
+      <td><strong>Project Manager (PM)</strong></td>
+      <td>Triages incoming bugs, sets Priority/Severity, assigns developers, and monitors release quality.</td>
+      <td><strong>Product Owner (PO)</strong> (Prioritizes bug backlog against feature user stories)</td>
+    </tr>
+    <tr>
+      <td><strong>Scrum Master (Optional Agile Facilitator)</strong></td>
+      <td>Does not fix bugs directly. Uses the <em>Metrics Dashboard (DSI, MTTR, Reopen Rate)</em> during Sprint Retrospectives to eliminate delivery blockers and optimize sprint velocity.</td>
+      <td><strong>Scrum Master</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>3. Functional Requirements</h2>
+<ul>
+  <li><strong>FR-1 (Maintenance Categorization):</strong> Every ticket must be classified as Corrective (fault fix), Adaptive (environment change), Perfective (enhancement), or Preventive (refactoring).</li>
+  <li><strong>FR-2 (Finite State Machine):</strong> Defect status transitions must follow strict protocol: <code>NEW &rarr; ASSIGNED &rarr; IN PROGRESS &rarr; RESOLVED &rarr; UNDER RETEST &rarr; CLOSED</code>. If retest fails, it must transition to <code>REOPENED</code>.</li>
+  <li><strong>FR-3 (Audit Trail & Traceability):</strong> Any state modification automatically logs an immutable record with actor name, timestamp, previous status, and justification reason.</li>
+  <li><strong>FR-4 (Software Process Metrics):</strong>
+    <ul>
+      <li><strong>Defect Severity Index (DSI):</strong> Weighted severity score: <code>[(4 &times; Critical) + (3 &times; High) + (2 &times; Medium) + (1 &times; Low)] / Total Defects</code>.</li>
+      <li><strong>Mean Time to Resolution (MTTR):</strong> Average duration in hours/days between defect logging and resolution.</li>
+      <li><strong>Defect Density:</strong> Total defects divided by module size in KLOC (Thousands of Lines of Code).</li>
+      <li><strong>Defect Reopen Rate:</strong> Percentage of resolved tickets that failed verification: <code>(Reopened Count / Resolved Count) &times; 100</code>.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2>4. System Modeling & UML Diagrams</h2>
+
+<h3>4.1 UML Use Case Diagram</h3>
+<p>Models the system boundaries and actor permissions across QA, Developers, and Management.</p>
+<div class="diagram-box">
+  <pre class="mermaid">
+flowchart LR
+    QA["QA / Test Engineer"]
+    DEV["Developer / Engineer"]
+    PM["Project Manager / PO"]
+
+    subgraph DevCore_System ["DevCore Bug Tracker System"]
+        UC1(["Log Defect & Steps (Outcome 3)"])
+        UC2(["Classify Maintenance Type (Outcome 1)"])
+        UC3(["Assign Defect & Triage"])
+        UC4(["Develop Patch & Update Status (Outcome 2)"])
+        UC5(["Retest & Verify (Close / Reopen)"])
+        UC6(["View Audit Traceability Trail"])
+        UC7(["Analyze Metrics Dashboard (Outcome 4)"])
+    end
+
+    QA --> UC1
+    QA --> UC2
+    QA --> UC5
+    QA --> UC6
+
+    PM --> UC3
+    PM --> UC6
+    PM --> UC7
+
+    DEV --> UC4
+    DEV --> UC6
+  </pre>
+</div>
+
+<h3>4.2 UML Class Diagram</h3>
+<p>Represents the object structure, data attributes, and methods of the core entities.</p>
+<div class="diagram-box">
+  <pre class="mermaid">
+classDiagram
+    class Module {
+        +int id
+        +string name
+        +float kloc
+        +string description
+        +get_defect_density() float
+    }
+
+    class Bug {
+        +int id
+        +string bug_code
+        +string title
+        +string module_name
+        +string maintenance_type
+        +string severity
+        +string priority
+        +string status
+        +string environment
+        +string steps_to_reproduce
+        +datetime created_at
+        +datetime resolved_at
+        +int reopen_count
+        +transition_to(status, actor, reason)
+    }
+
+    class BugHistory {
+        +int id
+        +int bug_id
+        +string changed_by
+        +string old_status
+        +string new_status
+        +datetime timestamp
+    }
+
+    class MetricsEngine {
+        +calculate_dsi() float
+        +calculate_mttr() float
+        +calculate_defect_density() dict
+        +calculate_reopen_rate() float
+    }
+
+    Module "1" -- "0..*" Bug : contains
+    Bug "1" -- "0..*" BugHistory : tracks
+    MetricsEngine ..> Bug : evaluates
+  </pre>
+</div>
+
+<h3>4.3 UML Sequence Diagram: Defect Lifecycle Flow</h3>
+<p>Shows the chronological messaging from defect reporting to QA closure or reopen.</p>
+<div class="diagram-box">
+  <pre class="mermaid">
+sequenceDiagram
+    autonumber
+    actor QA as QA Engineer
+    actor Dev as Developer
+    participant App as Web Frontend / API
+    participant DB as SQLite DB
+
+    QA->>App: Log Defect (Title, Steps, Severity, Module)
+    App->>DB: INSERT INTO bugs (status='New')
+    App->>DB: INSERT INTO bug_history ('Created')
+    DB-->>App: OK (BUG-101)
+    App-->>QA: Success
+
+    Dev->>App: Mark as "In Progress" & develop patch
+    App->>DB: UPDATE status='In_Progress'
+    
+    Dev->>App: Commit fix & Mark as "Resolved"
+    App->>DB: UPDATE status='Resolved', resolved_at=NOW()
+
+    QA->>App: Perform verification retest
+    alt Fix Verified
+        QA->>App: Mark "Closed"
+        App->>DB: UPDATE status='Closed', closed_at=NOW()
+    else Bug Persists
+        QA->>App: Mark "Reopened"
+        App->>DB: UPDATE status='Reopened', reopen_count++
+    end
+    
+    QA->>App: View Metrics Dashboard
+    App->>DB: Query DSI, MTTR, Defect Density
+    DB-->>App: Calculated Data
+    App-->>QA: Render Charts & KPI Cards
+  </pre>
+</div>
+
+<h3>4.4 UML State Machine Diagram: Bug State Transitions</h3>
+<p>Finite state machine with explicit guards preventing invalid jumps.</p>
+<div class="diagram-box">
+  <pre class="mermaid">
+stateDiagram-v2
+    [*] --> NEW : Defect Logged by QA
+    NEW --> ASSIGNED : Manager Allocates
+    ASSIGNED --> IN_PROGRESS : Developer Investigates
+    IN_PROGRESS --> RESOLVED : Code Patch Committed
+    RESOLVED --> UNDER_RETEST : QA Begins Verification
+    UNDER_RETEST --> CLOSED : Fix Verified (Success)
+    UNDER_RETEST --> REOPENED : Fault Persists (Fail)
+    REOPENED --> IN_PROGRESS : Rework by Developer
+    CLOSED --> [*] : Finalized
+  </pre>
+</div>
+
+<h3>4.5 UML Activity Diagram: End-to-End Resolution Process</h3>
+<p>Procedural workflow showing decisions, retest loops, and metric recalculation.</p>
+<div class="diagram-box">
+  <pre class="mermaid">
+flowchart TD
+    Start([Start]) --> A[QA Identifies Defect during Execution]
+    A --> B[Isolate Steps to Reproduce & Environment]
+    B --> C[Classify Maintenance: Corrective/Adaptive/Perfective/Preventive]
+    C --> D[Submit Ticket to DevCore (status = NEW)]
+    D --> E[Manager Assigns to Developer]
+    E --> F[Developer Investigates & Authors Patch]
+    F --> G[Developer Sets Status to RESOLVED]
+    G --> H[QA Pulls Build for Retest]
+    H --> I{Does the Defect Still Persist?}
+    
+    I -- Yes (Failed) --> J[Set Status to REOPENED]
+    J --> K[Increment Reopen Counter & Add Comment]
+    K --> F
+    
+    I -- No (Passed) --> L[Set Status to CLOSED]
+    L --> M[Log Timestamp in Audit Trail]
+    M --> N[Metrics Engine Updates DSI, MTTR, Defect Density]
+    N --> EndNode([End / Closed])
+  </pre>
+</div>
+
+<h3>4.6 Entity-Relationship (ER) Diagram</h3>
+<p>Relational database architecture implemented in <code>devcore_bugs.db</code>.</p>
+<div class="diagram-box">
+  <pre class="mermaid">
+erDiagram
+    MODULES {
+        INTEGER id PK
+        TEXT name UK
+        REAL kloc
+        TEXT description
+    }
+    BUGS {
+        INTEGER id PK
+        TEXT bug_code UK
+        TEXT title
+        TEXT module_name FK
+        TEXT maintenance_type
+        TEXT severity
+        TEXT priority
+        TEXT status
+        TEXT steps_to_reproduce
+        DATETIME created_at
+        DATETIME resolved_at
+        DATETIME closed_at
+        INTEGER reopen_count
+    }
+    BUG_HISTORY {
+        INTEGER id PK
+        INTEGER bug_id FK
+        TEXT changed_by
+        TEXT old_status
+        TEXT new_status
+        TEXT comment
+        DATETIME timestamp
+    }
+    MODULES ||--o{ BUGS : "contains"
+    BUGS ||--o{ BUG_HISTORY : "tracks"
+  </pre>
+</div>
+
+<h2>5. Non-Functional Requirements & Traceability Summary</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Lab Outcome</th>
+      <th>Requirement Description</th>
+      <th>Implementation in DevCore</th>
+      <th>Verification Criteria</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Outcome 1</strong></td>
+      <td>Software Maintenance Requirements</td>
+      <td>IEEE 4-category dropdown in bug creation modal.</td>
+      <td>Filter defects by Corrective, Adaptive, Perfective, Preventive.</td>
+    </tr>
+    <tr>
+      <td><strong>Outcome 2</strong></td>
+      <td>Bug Life Cycle Workflow</td>
+      <td>Finite state machine with state transition validation.</td>
+      <td>Validate status changes (New &rarr; Resolved &rarr; Closed/Reopened).</td>
+    </tr>
+    <tr>
+      <td><strong>Outcome 3</strong></td>
+      <td>Issue Reporting & Traceability</td>
+      <td>Mandatory reproduction steps + <code>bug_history</code> audit trail.</td>
+      <td>Inspect chronological audit timeline of each ticket.</td>
+    </tr>
+    <tr>
+      <td><strong>Outcome 4</strong></td>
+      <td>Process Improvement Metrics</td>
+      <td>Real-time calculation of DSI, MTTR, Defect Density, Reopen Rate.</td>
+      <td>Formulas verified against mathematical ground truth.</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr>
+<p style="text-align: center; color: #718096; font-size: 0.9em;">
+  DevCore Bug Tracker & Metrics System &bull; B.Tech ECE Software Engineering Lab (CSM402)<br>
+  Prepared by <strong>M. Sanjhay Baargav (623147)</strong> &amp; <strong>G. Dheeraj (623192)</strong>
+</p>
+
+</body>
+</html>
+

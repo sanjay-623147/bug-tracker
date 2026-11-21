@@ -1,0 +1,211 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 680" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#edf2f7"/>
+    </linearGradient>
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1e3a8a"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+    <linearGradient id="frontendGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#eff6ff"/>
+      <stop offset="100%" stop-color="#dbeafe"/>
+    </linearGradient>
+    <linearGradient id="backendGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f0fdf4"/>
+      <stop offset="100%" stop-color="#dcfce7"/>
+    </linearGradient>
+    <linearGradient id="dbGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#faf5ff"/>
+      <stop offset="100%" stop-color="#f3e8ff"/>
+    </linearGradient>
+    <linearGradient id="outcomeGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fffbeb"/>
+      <stop offset="100%" stop-color="#fef3c7"/>
+    </linearGradient>
+    
+    <filter id="cardShadow" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+    
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#475569"/>
+    </marker>
+    <marker id="arrowBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#2563eb"/>
+    </marker>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#16a34a"/>
+    </marker>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="1000" height="680" rx="16" fill="url(#bgGrad)" stroke="#cbd5e1" stroke-width="1.5"/>
+
+  <!-- Top Title Banner -->
+  <rect x="0" y="0" width="1000" height="75" rx="16" fill="url(#headerGrad)"/>
+  <rect x="0" y="55" width="1000" height="20" fill="#1e3a8a"/>
+  <text x="35" y="42" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif" font-size="22" font-weight="700" fill="#ffffff">DevCore Bug Tracker &amp; Metrics System</text>
+  <text x="35" y="63" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif" font-size="12" font-weight="400" fill="#93c5fd">High-Level System Architecture (Software Engineering Lab - CSM402)</text>
+  <text x="965" y="45" text-anchor="end" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif" font-size="12" font-weight="600" fill="#e0f2fe">Team DevCore • Roll: 623147 &amp; 623192</text>
+
+  <!-- ==================== TIER 1: PRESENTATION LAYER ==================== -->
+  <g transform="translate(40, 100)">
+    <rect width="650" height="150" rx="12" fill="url(#frontendGrad)" stroke="#93c5fd" stroke-width="1.5" filter="url(#cardShadow)"/>
+    <rect x="18" y="-12" width="190" height="24" rx="6" fill="#2563eb"/>
+    <text x="28" y="4" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="11" font-weight="700" fill="#ffffff">LAYER 1: CLIENT FRONTEND</text>
+    <text x="220" y="7" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="11" fill="#64748b">(Single Page Application: HTML5 / Modern CSS / Vanilla JS / Chart.js)</text>
+
+    <!-- Component 1.1 -->
+    <rect x="25" y="30" width="135" height="100" rx="8" fill="#ffffff" stroke="#bfdbfe" stroke-width="1.2"/>
+    <text x="92" y="52" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#1e3a8a">📊 Dashboard</text>
+    <text x="92" y="72" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="10" fill="#475569">Real-time KPI Cards</text>
+    <text x="92" y="88" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="10" fill="#475569">Severity Distribution</text>
+    <text x="92" y="104" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="10" fill="#475569">Density Charts (KLOC)</text>
+
+    <!-- Component 1.2 -->
+    <rect x="175" y="30" width="140" height="100" rx="8" fill="#ffffff" stroke="#bfdbfe" stroke-width="1.2"/>
+    <text x="245" y="52" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#1e3a8a">🐞 Issue Tracker</text>
+    <text x="245" y="72" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="10" fill="#475569">Defect Data Table</text>
+    <text x="245" y="88" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="10" fill="#475569">Multi-Filter &amp; Search</text>
+    <text x="245" y="104" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="10" fill="#475569">Quick Status Updater</text>
+
+    <!-- Component 1.3 -->
+    <rect x="330" y="30" width="140" height="100" rx="8" fill="#ffffff" stroke="#bfdbfe" stroke-width="1.2"/>
+    <text x="400" y="52" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#1e3a8a">📝 Defect Logger</text>
+    <text x="400" y="72" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="10" fill="#475569">Reproduction Steps</text>
+    <text x="400" y="88" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="10" fill="#475569">Maintenance Type</text>
+    <text x="400" y="104" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="10" fill="#475569">Severity &amp; Priority</text>
+
+    <!-- Component 1.4 -->
+    <rect x="485" y="30" width="140" height="100" rx="8" fill="#ffffff" stroke="#bfdbfe" stroke-width="1.2"/>
+    <text x="555" y="52" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#1e3a8a">📜 Audit &amp; Guide</text>
+    <text x="555" y="72" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="10" fill="#475569">Timeline Traceability</text>
+    <text x="555" y="88" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="10" fill="#475569">Bug Life Cycle Guide</text>
+    <text x="555" y="104" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="10" fill="#475569">Lab Outcomes Map</text>
+  </g>
+
+  <!-- INTER-TIER CONNECTOR 1 -> 2 (HTTP/REST) -->
+  <g transform="translate(365, 252)">
+    <line x1="0" y1="0" x2="0" y2="40" stroke="#2563eb" stroke-width="2.5" stroke-dasharray="4,3" marker-end="url(#arrowBlue)"/>
+    <line x1="15" y1="40" x2="15" y2="0" stroke="#475569" stroke-width="2.5" marker-end="url(#arrow)"/>
+    <rect x="-120" y="10" width="250" height="20" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+    <text x="5" y="24" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, monospace" font-size="10.5" font-weight="600" fill="#1e293b">HTTP REST APIs (JSON Payloads)</text>
+  </g>
+
+  <!-- ==================== TIER 2: APPLICATION BACKEND LAYER ==================== -->
+  <g transform="translate(40, 295)">
+    <rect width="650" height="150" rx="12" fill="url(#backendGrad)" stroke="#86efac" stroke-width="1.5" filter="url(#cardShadow)"/>
+    <rect x="18" y="-12" width="220" height="24" rx="6" fill="#16a34a"/>
+    <text x="28" y="4" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="11" font-weight="700" fill="#ffffff">LAYER 2: BACKEND CONTROLLER</text>
+    <text x="250" y="7" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="11" fill="#64748b">(Python server.py: Built-in HTTP / Socket Server)</text>
+
+    <!-- Component 2.1 -->
+    <rect x="25" y="30" width="185" height="100" rx="8" fill="#ffffff" stroke="#bbf7d0" stroke-width="1.2"/>
+    <text x="117" y="52" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#166534">🌐 REST API Router</text>
+    <text x="117" y="72" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="10" fill="#475569">GET /api/bugs</text>
+    <text x="117" y="88" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="10" fill="#475569">POST /api/bugs (Create)</text>
+    <text x="117" y="104" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="10" fill="#475569">POST /api/bugs/update_status</text>
+
+    <!-- Component 2.2 -->
+    <rect x="232" y="30" width="185" height="100" rx="8" fill="#ffffff" stroke="#bbf7d0" stroke-width="1.2"/>
+    <text x="324" y="52" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#166534">⚙️ Lifecycle FSM Engine</text>
+    <text x="324" y="72" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="10" fill="#475569">State Transition Guard</text>
+    <text x="324" y="88" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="10" fill="#475569">New ➔ Retest ➔ Closed</text>
+    <text x="324" y="104" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="10" fill="#475569">Reopen Counter Increment</text>
+
+    <!-- Component 2.3 -->
+    <rect x="440" y="30" width="185" height="100" rx="8" fill="#ffffff" stroke="#bbf7d0" stroke-width="1.2"/>
+    <text x="532" y="52" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#166534">📐 Metrics Engine</text>
+    <text x="532" y="72" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="10" fill="#475569">DSI (Defect Severity Index)</text>
+    <text x="532" y="88" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="10" fill="#475569">MTTR (Mean Time to Resolve)</text>
+    <text x="532" y="104" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="10" fill="#475569">Defect Density &amp; Reopen Rate</text>
+  </g>
+
+  <!-- INTER-TIER CONNECTOR 2 -> 3 (SQL / DB-API) -->
+  <g transform="translate(365, 447)">
+    <line x1="0" y1="0" x2="0" y2="40" stroke="#16a34a" stroke-width="2.5" stroke-dasharray="4,3" marker-end="url(#arrowGreen)"/>
+    <line x1="15" y1="40" x2="15" y2="0" stroke="#475569" stroke-width="2.5" marker-end="url(#arrow)"/>
+    <rect x="-120" y="10" width="250" height="20" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+    <text x="5" y="24" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, monospace" font-size="10.5" font-weight="600" fill="#1e293b">Python DB-API / SQL Queries</text>
+  </g>
+
+  <!-- ==================== TIER 3: PERSISTENCE LAYER ==================== -->
+  <g transform="translate(40, 490)">
+    <rect width="650" height="150" rx="12" fill="url(#dbGrad)" stroke="#d8b4fe" stroke-width="1.5" filter="url(#cardShadow)"/>
+    <rect x="18" y="-12" width="220" height="24" rx="6" fill="#9333ea"/>
+    <text x="28" y="4" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="11" font-weight="700" fill="#ffffff">LAYER 3: DATABASE STORAGE</text>
+    <text x="250" y="7" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="11" fill="#64748b">(SQLite: devcore_bugs.db / Zero Config / ACID)</text>
+
+    <!-- Component 3.1 -->
+    <rect x="25" y="30" width="185" height="100" rx="8" fill="#ffffff" stroke="#e9d5ff" stroke-width="1.2"/>
+    <text x="117" y="52" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#6b21a8">📁 Table: modules</text>
+    <text x="117" y="72" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="10" fill="#475569">id (Primary Key)</text>
+    <text x="117" y="88" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="10" fill="#475569">name (Subsystem name)</text>
+    <text x="117" y="104" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="10" fill="#475569">kloc (Code size in KLOC)</text>
+
+    <!-- Component 3.2 -->
+    <rect x="232" y="30" width="185" height="100" rx="8" fill="#ffffff" stroke="#e9d5ff" stroke-width="1.2"/>
+    <text x="324" y="52" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#6b21a8">🗂️ Table: bugs</text>
+    <text x="324" y="72" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="10" fill="#475569">bug_code (BUG-101...)</text>
+    <text x="324" y="88" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="10" fill="#475569">severity, priority, status</text>
+    <text x="324" y="104" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="10" fill="#475569">created_at, resolved_at</text>
+
+    <!-- Component 3.3 -->
+    <rect x="440" y="30" width="185" height="100" rx="8" fill="#ffffff" stroke="#e9d5ff" stroke-width="1.2"/>
+    <text x="532" y="52" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#6b21a8">📜 Table: bug_history</text>
+    <text x="532" y="72" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="10" fill="#475569">bug_id (Foreign Key)</text>
+    <text x="532" y="88" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="10" fill="#475569">old_status ➔ new_status</text>
+    <text x="532" y="104" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="10" fill="#475569">changed_by, timestamp</text>
+  </g>
+
+  <!-- ==================== SIDEBAR: COURSEWORK OUTCOMES MAPPING ==================== -->
+  <g transform="translate(710, 100)">
+    <rect width="250" height="540" rx="12" fill="url(#outcomeGrad)" stroke="#fcd34d" stroke-width="1.5" filter="url(#cardShadow)"/>
+    <rect x="18" y="-12" width="214" height="24" rx="6" fill="#d97706"/>
+    <text x="125" y="4" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="10.5" font-weight="700" fill="#ffffff">LAB SYLLABUS OUTCOMES</text>
+
+    <!-- Outcome 1 Box -->
+    <rect x="15" y="25" width="220" height="110" rx="8" fill="#ffffff" stroke="#fde68a" stroke-width="1.2"/>
+    <rect x="22" y="32" width="75" height="18" rx="4" fill="#fef3c7"/>
+    <text x="60" y="45" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="9.5" font-weight="700" fill="#b45309">OUTCOME 1</text>
+    <text x="25" y="66" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="11" font-weight="700" fill="#92400e">Maintenance Types</text>
+    <text x="25" y="83" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="10" fill="#475569">• Corrective (Bug fix)</text>
+    <text x="25" y="98" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="10" fill="#475569">• Adaptive (Env changes)</text>
+    <text x="25" y="113" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="10" fill="#475569">• Perfective / Preventive</text>
+    <text x="25" y="127" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="9" font-style="italic" fill="#0284c7">Lead: M. Sanjhay Baargav</text>
+
+    <!-- Outcome 2 Box -->
+    <rect x="15" y="150" width="220" height="110" rx="8" fill="#ffffff" stroke="#fde68a" stroke-width="1.2"/>
+    <rect x="22" y="157" width="75" height="18" rx="4" fill="#fef3c7"/>
+    <text x="60" y="170" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="9.5" font-weight="700" fill="#b45309">OUTCOME 2</text>
+    <text x="25" y="191" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="11" font-weight="700" fill="#92400e">Bug Lifecycle FSM</text>
+    <text x="25" y="208" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="10" fill="#475569">• New ➔ Assigned</text>
+    <text x="25" y="223" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="10" fill="#475569">• In Progress ➔ Resolved</text>
+    <text x="25" y="238" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="10" fill="#475569">• Retest ➔ Closed / Reopen</text>
+    <text x="25" y="252" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="9" font-style="italic" fill="#0284c7">Lead: G. Dheeraj</text>
+
+    <!-- Outcome 3 Box -->
+    <rect x="15" y="275" width="220" height="115" rx="8" fill="#ffffff" stroke="#fde68a" stroke-width="1.2"/>
+    <rect x="22" y="282" width="75" height="18" rx="4" fill="#fef3c7"/>
+    <text x="60" y="295" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="9.5" font-weight="700" fill="#b45309">OUTCOME 3</text>
+    <text x="25" y="316" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="11" font-weight="700" fill="#92400e">Reporting &amp; Traceability</text>
+    <text x="25" y="333" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="10" fill="#475569">• Structured Defect Logging</text>
+    <text x="25" y="348" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="10" fill="#475569">• Reproduction Steps Capture</text>
+    <text x="25" y="363" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="10" fill="#475569">• Immutable Audit History</text>
+    <text x="25" y="378" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="9" font-style="italic" fill="#0284c7">Lead: M. Sanjhay Baargav</text>
+
+    <!-- Outcome 4 Box -->
+    <rect x="15" y="405" width="220" height="120" rx="8" fill="#ffffff" stroke="#fde68a" stroke-width="1.2"/>
+    <rect x="22" y="412" width="75" height="18" rx="4" fill="#fef3c7"/>
+    <text x="60" y="425" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="9.5" font-weight="700" fill="#b45309">OUTCOME 4</text>
+    <text x="25" y="446" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="11" font-weight="700" fill="#92400e">Process Quality Metrics</text>
+    <text x="25" y="463" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="10" fill="#475569">• Defect Severity Index (DSI)</text>
+    <text x="25" y="478" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="10" fill="#475569">• Mean Time to Resolve (MTTR)</text>
+    <text x="25" y="493" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="10" fill="#475569">• Defect Density (per KLOC)</text>
+    <text x="25" y="508" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="10" fill="#475569">• Defect Reopen Rate (%)</text>
+    <text x="25" y="521" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="9" font-style="italic" fill="#0284c7">Lead: G. Dheeraj</text>
+  </g>
+</svg>
+
