@@ -19,6 +19,7 @@ import database
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 STATIC_DIR = os.path.join(BASE_DIR, "static")
+NETLIFY_URL = "https://bug-tracker.netlify.app"
 
 # Make sure the SQLite database exists and has the sample data before requests.
 database.init_db()
@@ -44,7 +45,13 @@ def _respond(start_response, status, body, content_type, extra_headers=None):
 
 def _send_json(start_response, data, status="200 OK"):
     body = json.dumps(data, indent=2).encode("utf-8")
-    return _respond(start_response, status, body, "application/json; charset=utf-8")
+    return _respond(
+        start_response,
+        status,
+        body,
+        "application/json; charset=utf-8",
+        [("Cache-Control", "no-store")],
+    )
 
 
 def _serve_static(start_response, path):
@@ -288,6 +295,20 @@ def application(environ, start_response):
     """WSGI entry point used by PythonAnywhere."""
     path = environ.get("PATH_INFO", "/") or "/"
     method = environ.get("REQUEST_METHOD", "GET").upper()
+
+    # The public UI now lives on Netlify. Keep /api/* here as the backend so
+    # Netlify can proxy API calls, but send all page requests to Netlify.
+    if not path.startswith("/api/"):
+        query = environ.get("QUERY_STRING", "")
+        location = NETLIFY_URL + path + (("?" + query) if query else "")
+        body = f"Redirecting to {location}\n".encode("utf-8")
+        return _respond(
+            start_response,
+            "301 MOVED PERMANENTLY",
+            body,
+            "text/plain; charset=utf-8",
+            [("Location", location)],
+        )
 
     if method == "OPTIONS":
         return _respond(start_response, "200 OK", b"", "text/plain")
